@@ -1,6 +1,6 @@
 # PoGo Trade Hub Pro 2.0 🚀
 
-[![Estado](https://img.shields.io/badge/Estado-Activo-success.svg)](#)
+
 
 Una herramienta web moderna y ligera diseñada para los jugadores de Pokémon GO. Permite crear, organizar y exportar fácilmente listas de intercambio (Trade Lists) de manera visual y atractiva.
 

@@ -331,6 +331,71 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        /* Responsividad para móviles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 10px;
+            }
+
+            .controls button {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .trade-board {
+                grid-template-columns: 1fr;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            }
+
+            .poke-card {
+                padding: 8px;
+            }
+
+            .poke-card img {
+                width: 75px;
+                height: 75px;
+            }
+
+            .attributes {
+                gap: 2px;
+            }
+
+            .attr-btn {
+                font-size: 0.6em;
+                padding: 2px 4px;
+            }
+
+            #capture-area {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            .download-btn {
+                width: 100%;
+                padding: 12px 10px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
