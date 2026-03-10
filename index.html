@@ -246,6 +246,12 @@
             color: #fff;
         }
 
+        .attr-btn.active.shiny-btn {
+            background: #eab308;
+            color: #1e293b;
+            font-weight: bold;
+        }
+
         .inputs {
             display: flex;
             gap: 5px;
@@ -465,7 +471,6 @@
                          style="width: 100%; height: 100%; position: relative; z-index: 1;"
                          data-normal="${spriteNormal}" 
                          data-shiny="${spriteShiny}" 
-                         onclick="toggleShiny(this)" 
                          title="Click para versión Shiny">
                 </div>
                 
@@ -475,6 +480,7 @@
                     <div class="attr-btn specbg" onclick="this.classList.toggle('active')">Spec BG</div>
                     <div class="attr-btn xxl" onclick="this.classList.toggle('active')">XXL</div>
                     <div class="attr-btn special-icon" onclick="toggleOverlay(this)">Gigamax</div>
+                    <div class="attr-btn shiny-btn" onclick="toggleShiny(this)">Shiny</div>
                 </div>
                 
                 <div class="inputs">
@@ -487,11 +493,13 @@
             suggestionsBox.style.display = 'none';
         }
 
-        function toggleShiny(imgElement) {
+        function toggleShiny(btn) {
+            btn.classList.toggle('active');
+            const card = btn.closest('.poke-card');
+            const imgElement = card.querySelector('.main-img');
             const isShiny = imgElement.src === imgElement.dataset.shiny;
             imgElement.src = isShiny ? imgElement.dataset.normal : imgElement.dataset.shiny;
 
-            const card = imgElement.closest('.poke-card');
             const gigamaxBtn = card.querySelector('.attr-btn.special-icon');
             const shinyIcon = card.querySelector('.shiny-icon');
 
