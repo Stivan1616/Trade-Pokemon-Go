@@ -23,6 +23,7 @@
             color: var(--text-main);
             margin: 0;
             padding: 20px;
+            position: relative;
         }
 
         h1 {
@@ -332,6 +333,29 @@
             font-weight: bold;
         }
 
+        .switch-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .switch-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
         /* Responsividad para móviles */
         @media (max-width: 768px) {
             body {
@@ -340,6 +364,16 @@
 
             h1 {
                 font-size: 1.5rem;
+                margin-top: 50px;
+                /* Espacio para el boton de switch en móvil */
+            }
+
+            .switch-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 6px 10px;
             }
 
             .controls {
@@ -401,6 +435,9 @@
 
 <body>
 
+    <button class="switch-btn" onclick="switchColumns()">
+        <span style="font-size: 1.2em;">🔄</span> Cambiar Lados
+    </button>
     <h1>🚀 PoGo Trade Hub Pro 2.0</h1>
 
     <div class="controls">
@@ -659,6 +696,28 @@
                 console.error("Error al generar la imagen:", error);
                 alert("Ocurrió un error al descargar la imagen. Intenta recargar la página: " + error.message);
             });
+        }
+
+        // --- INTERCAMBIAR COLUMNAS ---
+        function switchColumns() {
+            const board = document.getElementById('main-board');
+            if (board.children.length > 1) {
+                // Intercambiar columnas
+                board.appendChild(board.firstElementChild);
+            }
+
+            // Intercambiar botones de 'Añadir' en la barra de controles
+            const controls = document.querySelector('.controls');
+            const btnOffer = controls.querySelector('.btn-offer');
+            const btnWant = controls.querySelector('.btn-want');
+
+            if (btnOffer && btnWant) {
+                if (btnOffer.nextElementSibling === btnWant) {
+                    controls.insertBefore(btnWant, btnOffer);
+                } else {
+                    controls.insertBefore(btnOffer, btnWant);
+                }
+            }
         }
     </script>
 </body>
